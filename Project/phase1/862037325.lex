@@ -39,6 +39,7 @@ not		    {cout <<"NOT\n"; y =y +yyleng;}
 true		{cout <<"TRUE\n"; y =y +yyleng;}
 false		{cout <<"FALSE\n"; y =y +yyleng;}
 return		{cout <<"RETURN\n"; y =y +yyleng;}
+break       {cout <<"BREAK\n"; y =y +yyleng;}
 
         /*------Arithmetic Operators------*/
 "+"         {cout <<"ADD\n"; y =y +yyleng;}

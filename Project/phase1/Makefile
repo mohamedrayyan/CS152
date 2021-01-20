@@ -1,5 +1,4 @@
-all: file1 lexer
-file1: mini_l.lex
-	flex mini_l.lex
-lexer: lex.yy.c
+lexer: 862037325.lex
+	flex 862037325.lex
 	g++ -o lexer lex.yy.c -lfl
+	rm -rf lex.yy.c
