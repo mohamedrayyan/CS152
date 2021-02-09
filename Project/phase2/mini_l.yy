@@ -1,15 +1,6 @@
 %{
 %}
 
-%skeleton "lalr1.cc"
-%require "2.3"
-%defines
-%define api.token.constructor
-%define api.value.type variant
-%define parse.error verbose
-%locations
-
-
 %code requires
 {
 
@@ -23,7 +14,8 @@
 
 %code
 {
-#include "parser.tab.hh"
+#include <iostream>
+#include "y.tab.hh"
 
 	/* you may need these header files
 	 * add more header file if you need more
@@ -32,8 +24,10 @@
 #include <map>
 #include <regex>
 #include <set>
-yy::parser::symbol_type yylex();
 
+using namespace std;
+
+yy::parser::symbol_type yylex();
 	/* define your symbol table, global variables,
 	 * list of keywords or any function you may need here */
 

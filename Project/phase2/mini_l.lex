@@ -1,6 +1,6 @@
 %{
 #include <iostream>
-#include "y.tab.h"
+#include "y.tab.hh"
 
 using namespace std;
 
