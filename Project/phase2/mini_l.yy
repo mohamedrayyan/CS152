@@ -70,7 +70,7 @@ function: FUNCTION IDENT SEMICOLON
           BEGIN_PARAMS Declarations END_PARAMS
 		  BEGIN_LOCALS Declarations END_LOCALS
 		  BEGIN_BODY Statements END_BODY
-		  {cout <<"function -> FUNCTION IDENT " <<$2 " SEMICOLON BEGIN_PARAMS Declarations END_PARAMS BEGIN_LOCALS Declarations END_LOCALS BEGIN_BODY Statements END_BODY\n";}
+		  {cout <<"function -> FUNCTION IDENT " <<$2 <<" SEMICOLON BEGIN_PARAMS Declarations END_PARAMS BEGIN_LOCALS Declarations END_LOCALS BEGIN_BODY Statements END_BODY\n";}
 		| FUNCTION IDENT error
           BEGIN_PARAMS Declarations END_PARAMS
 		  BEGIN_LOCALS Declarations END_LOCALS
@@ -93,7 +93,7 @@ identifier: IDENT {cout <<"identifier -> IDENT " <<$1 <<"\n";}
         | identifier COMMA IDENT {cout <<"identifier -> identifier COMMA IDENT " <<$3 <<"\n";}
 		| identifier error IDENT
 		;
-Statements: StatementDef SEMICOLON {cout <<"Statements -> StatementDef SEMICOLON\n"}
+Statements: StatementDef SEMICOLON {cout <<"Statements -> StatementDef SEMICOLON\n";}
         | Statements StatementDef SEMICOLON {cout <<"Statements -> Statements StatementDef SEMICOLON\n";}
 		| StatementDef error
 		| Statements StatementDef error
@@ -156,10 +156,10 @@ Mutiplicative_Expr: Term {cout <<"Mutiplicative_Expr -> Term\n";}
 Term: Var {cout <<"Term -> Var\n";}
         | SUB Var %prec UMINUS {cout <<"Term -> SUB Var\n";}
 		| NUMBER {cout <<"Term -> NUMBER " <<$1 <<"\n";}
-		| SUB NUMBER %prec UMINUS{cout <<"Term -> SUB NUMBER " $2 <<"\n";}
+		| SUB NUMBER %prec UMINUS{cout <<"Term -> SUB NUMBER " <<$2 <<"\n";}
 		| L_PAREN Expression R_PAREN {cout <<"Term -> L_PAREN Expression R_PAREN\n";}
 		| SUB L_PAREN Expression R_PAREN %prec UMINUS {cout <<"Term -> SUB L_PAREN Expression R_PAREN\n";}
-		| IDENT L_PAREN Expression_loop R_PAREN {printf("Term -> IDENT %s L_PAREN Expression_loop R_PAREN\n", $1);}
+		| IDENT L_PAREN Expression_loop R_PAREN {cout <<"Term -> IDENT " <<$1 <<" L_PAREN Expression_loop R_PAREN\n";}
 		| IDENT L_PAREN /* epsilon */ R_PAREN {cout <<"Term -> IDENT " <<$1 <<" L_PAREN /* epsilon */ R_PAREN\n";}
 		;
 Expression_loop: Expression	{cout <<"Expression_loop -> Expression\n";}
