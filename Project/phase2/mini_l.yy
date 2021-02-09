@@ -8,7 +8,6 @@
  void yyerror(const char *msg);
  extern int x;
  extern int y;
- FILE * yyin;
 %}
 
 %token END 0 "end of file";
@@ -18,6 +17,8 @@
 int ival;
 char* cval;
 }
+
+%error-verbose
 
 %start program
 
@@ -147,6 +148,8 @@ Expression_loop: Expression	{cout <<"Expression_loop -> Expression\n";}
 
 int main(int argc, char **argv) {
     yyparse();
+
+    return 0;
 }
 
 void yyerror(const char *msg) {
