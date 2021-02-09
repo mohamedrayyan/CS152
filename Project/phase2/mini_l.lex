@@ -12,16 +12,16 @@ DIGIT[0-9]
 
 %%
         /*------Reserved Words------*/
-function    {y =y +yyleng; return FUNCTION;};
-beginparams {y =y +yyleng; return BEGIN_PARAMS;};
-endparams   {y =y +yyleng; return END_PARAMS;};
-beginlocals {y =y +yyleng; return BEGIN_LOCALS;};
-endlocals   {y =y +yyleng; return END_LOCALS;};
-beginbody   {y =y +yyleng; return BEGIN_BODY};
-endbody     {y =y +yyleng; return END_BODY};
-integer     {y =y +yyleng; return INTEGER;};
-array       {y =y +yyleng; return ARRAY;};
-of          {y =y +yyleng; return OF;};
+function    {y =y +yyleng; return FUNCTION;}
+beginparams {y =y +yyleng; return BEGIN_PARAMS;}
+endparams   {y =y +yyleng; return END_PARAMS;}
+beginlocals {y =y +yyleng; return BEGIN_LOCALS;}
+endlocals   {y =y +yyleng; return END_LOCALS;}
+beginbody   {y =y +yyleng; return BEGIN_BODY;}
+endbody     {y =y +yyleng; return END_BODY;}
+integer     {y =y +yyleng; return INTEGER;}
+array       {y =y +yyleng; return ARRAY;}
+of          {y =y +yyleng; return OF;}
 if		    {y =y +yyleng; return IF;}
 then		{y =y +yyleng; return THEN;}
 endif		{y =y +yyleng; return ENDIF;}
