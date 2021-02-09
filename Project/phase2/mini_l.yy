@@ -1,38 +1,15 @@
 %{
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <iostream>
+
+ using namespace std;
+
+ void yyerror(const char *msg);
+ extern int x;
+ extern int y;
+ FILE * yyin;
 %}
-
-%code requires
-{
-
-#include <list>
-#include <string>
-#include <functional>
-	/* define the sturctures using as types for non-terminals */
-
-	/* end the structures for non-terminal types */
-}
-
-%code
-{
-#include <iostream>
-#include "y.tab.hh"
-
-	/* you may need these header files
-	 * add more header file if you need more
-	 */
-#include <sstream>
-#include <map>
-#include <regex>
-#include <set>
-
-using namespace std;
-
-yy::parser::symbol_type yylex();
-	/* define your symbol table, global variables,
-	 * list of keywords or any function you may need here */
-
-	/* end of your code */
-}
 
 %token END 0 "end of file";
 
