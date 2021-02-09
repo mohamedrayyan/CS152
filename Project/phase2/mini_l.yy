@@ -169,13 +169,7 @@ Expression_loop: Expression	{cout <<"Expression_loop -> Expression\n";}
 %%
 
 int main(int argc, char **argv) {
-	yy::parser p;
-	return p.parse();
-}
-
-void yy::parser::error(const yy::location& l, const std::string& m) {
-	//std::cerr << l << ": " << m << std::endl;
-	cout <<l <<": " <<m <<endl;
+    yyparse();
 }
 
 void yyerror(const char *msg) {

@@ -78,10 +78,14 @@ return		{y =y +yyleng; return RETURN;}
 "\n"  {x =x +1; y =1;}
 
         /*------Identifiers------*/
-([a-zA-Z])|([a-zA-Z][a-zA-Z0-9_]*[a-zA-Z0-9]) {y =y + yyleng; return IDENT;}
+([a-zA-Z])|([a-zA-Z][a-zA-Z0-9_]*[a-zA-Z0-9]) {y =y + yyleng; yylval.cval =yytext; return IDENT;}
 
         /*------Unrecognized Identifier Errors------*/
 [0-9_][a-zA-Z0-9_]*     {cout <<"Error at line " <<x <<", column " <<y <<": Identifier \"" <<yytext <<"\" must start with a letter\n"; exit(0);}
 [a-zA-Z][a-zA-Z0-9_]*   {cout <<"Error at line " <<x <<", column " <<y <<": Identifier \"" <<yytext <<"\" can't end with an underscore \n"; exit(0);}
 .                       {cout <<"Error at line " <<x <<", column " <<y <<": unrecognized symbol \"" <<yytext <<"\"\n";}
 %%
+
+int main(int argc, char **argv) {
+    yylex();
+}
