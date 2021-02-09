@@ -1,4 +1,7 @@
-lexer: mini_l.lex
-	flex mini_l.lex
-	g++ -o lexer lex.yy.c -ll
-	rm -rf lex.yy.c
+parser: mini_l.lex mini_l.y
+		bison -v -d --file-prefix=y mini_l.y
+		flex mini_l.lex
+		gcc  -o parser y.tab.c lex.yy.c -ll
+
+clean:
+		rm -f lex.yy.c y.tab.* y.output *.o y location.hh position.hh stack.hh
