@@ -1,5 +1,6 @@
 %{
 #include <iostream>
+#include "y.tab.h"
 
 using namespace std;
 
@@ -11,92 +12,77 @@ DIGIT[0-9]
 
 %%
         /*------Reserved Words------*/
-function    {cout <<"FUNCTION\n"; y =y +yyleng;};
-beginparams {cout <<"BEGIN_PARAMS\n"; y =y +yyleng;};
-endparams   {cout <<"END_PARAMS\n"; y =y +yyleng;};
-beginlocals {cout <<"BEGIN_LOCALS\n"; y =y +yyleng;};
-endlocals   {cout <<"END_LOCALS\n"; y =y +yyleng;};
-beginbody   {cout <<"BEGIN_BODY\n"; y =y +yyleng;};
-endbody     {cout <<"END_BODY\n"; y =y +yyleng;};
-integer     {cout <<"INTEGER\n"; y =y +yyleng;};
-array       {cout <<"ARRAY\n"; y =y +yyleng;};
-of          {cout <<"OF\n"; y =y +yyleng;};
-if		    {cout <<"IF\n"; y =y +yyleng;}
-then		{cout <<"THEN\n"; y =y +yyleng;}
-endif		{cout <<"ENDIF\n"; y =y +yyleng;}
-else		{cout <<"ELSE\n"; y =y +yyleng;}
-while		{cout <<"WHILE\n"; y =y +yyleng;}
-do		    {cout <<"DO\n"; y =y +yyleng;}
-for		    {cout <<"FOR\n"; y =y +yyleng;}
-beginloop	{cout <<"BEGINLOOP\n"; y =y +yyleng;}
-endloop		{cout <<"ENDLOOP\n"; y =y +yyleng;}
-continue	{cout <<"CONTINUE\n"; y =y +yyleng;}
-read		{cout <<"READ\n"; y =y +yyleng;}
-write		{cout <<"WRITE\n"; y =y +yyleng;}
-and		    {cout <<"AND\n"; y =y +yyleng;}
-or		    {cout <<"OR\n"; y =y +yyleng;}
-not		    {cout <<"NOT\n"; y =y +yyleng;}
-true		{cout <<"TRUE\n"; y =y +yyleng;}
-false		{cout <<"FALSE\n"; y =y +yyleng;}
-return		{cout <<"RETURN\n"; y =y +yyleng;}
-break       {cout <<"BREAK\n"; y =y +yyleng;}
+function    {y =y +yyleng; return FUNCTION;};
+beginparams {y =y +yyleng; return BEGIN_PARAMS;};
+endparams   {y =y +yyleng; return END_PARAMS;};
+beginlocals {y =y +yyleng; return BEGIN_LOCALS;};
+endlocals   {y =y +yyleng; return END_LOCALS;};
+beginbody   {y =y +yyleng; return BEGIN_BODY};
+endbody     {y =y +yyleng; return END_BODY};
+integer     {y =y +yyleng; return INTEGER;};
+array       {y =y +yyleng; return ARRAY;};
+of          {y =y +yyleng; return OF;};
+if		    {y =y +yyleng; return IF;}
+then		{y =y +yyleng; return THEN;}
+endif		{y =y +yyleng; return ENDIF;}
+else		{y =y +yyleng; return ELSE;}
+while		{y =y +yyleng; return WHILE;}
+do		    {y =y +yyleng; return DO;}
+for		    {y =y +yyleng; return FOR;}
+beginloop	{y =y +yyleng; return BEGINLOOP;}
+endloop		{y =y +yyleng; return ENDLOOP;}
+continue	{y =y +yyleng; return CONTINUE;}
+read		{y =y +yyleng; return READ;}
+write		{y =y +yyleng; return WRITE;}
+and		    {y =y +yyleng; return AND;}
+or		    {y =y +yyleng; return OR;}
+not		    {y =y +yyleng; return NOT;}
+true		{y =y +yyleng; return TRUE;}
+false		{y =y +yyleng; return FALSE;}
+return		{y =y +yyleng; return RETURN;}
+break       {y =y +yyleng; return BREAK;}
 
         /*------Arithmetic Operators------*/
-"+"         {cout <<"ADD\n"; y =y +yyleng;}
-"-"         {cout <<"SUB\n"; y =y +yyleng;}
-"*"         {cout <<"MULT\n"; y =y +yyleng;}
-"/"         {cout <<"DIV\n"; y =y +yyleng;}
-"%"         {cout <<"MOD\n"; y =y +yyleng;}
+"+"         {y =y +yyleng; return ADD;}
+"-"         {y =y +yyleng; return SUB;}
+"*"         {y =y +yyleng; return MULT;}
+"/"         {y =y +yyleng; return DIV;}
+"%"         {y =y +yyleng; return MOD;}
 
         /*------Comparison Operators------*/
-"=="        {cout <<"EQ\n"; y =y +yyleng;}
-"<>"        {cout <<"NEQ\n"; y =y +yyleng;}
-"<"         {cout <<"LT\n"; y =y +yyleng;}
-">"         {cout <<"GT\n"; y =y +yyleng;}
-"<="        {cout <<"LTE\n"; y =y +yyleng;}
-">="        {cout <<"GTE\n"; y =y +yyleng;}
+"=="        {y =y +yyleng; return EQ;}
+"<>"        {y =y +yyleng; return NEQ;}
+"<"         {y =y +yyleng; return LT;}
+">"         {y =y +yyleng; return GT;}
+"<="        {y =y +yyleng; return LTE;}
+">="        {y =y +yyleng; return GTE;}
 
         /*------Special Symbols------*/
-";"	        {cout <<"SEMICOLON\n"; y =y +yyleng;}
-":"         {cout <<"COLON\n"; y =y +yyleng;}
-","         {cout <<"COMMA\n"; y =y +yyleng;}
-"("         {cout <<"L_PAREN\n"; y =y +yyleng;}
-")"         {cout <<"R_PAREN\n"; y =y +yyleng;}
-"="         {cout <<"EQUAL\n"; y =y +yyleng;}
-"["	        {cout <<"L_SQUARE_BRACKET\n"; y =y +yyleng;}
-"]"         {cout <<"R_SQUARE_BRACKET\n"; y =y +yyleng;}
-":="        {cout <<"ASSIGN\n"; y =y +yyleng;}
+";"	        {y =y +yyleng; return SEMICOLON;}
+":"         {y =y +yyleng; return COLON;}
+","         {y =y +yyleng; return COMMA;}
+"("         {y =y +yyleng; return L_PAREN;}
+")"         {y =y +yyleng; return R_PAREN;}
+"="         {y =y +yyleng; return EQUAL;}
+"["	        {y =y +yyleng; return L_SQUARE_BRACKET;}
+"]"         {y =y +yyleng; return R_SQUARE_BRACKET;}
+":="        {y =y +yyleng; return ASSIGN;}
 
         /*------Comments------*/
 (##).*\n {x =x +1; y =1;}
 
         /*------Number------*/
-{DIGIT}+ {cout <<"NUMBER " <<yytext <<"\n"; y =y +yyleng;}
+{DIGIT}+ {y =y +yyleng; yylval.ival =atoi(yytext); return NUMBER;}
 
         /*------Spaces & Newlines------*/
 [ \t]+ {y =y +yyleng;}
 "\n"  {x =x +1; y =1;}
 
         /*------Identifiers------*/
-([a-zA-Z])|([a-zA-Z][a-zA-Z0-9_]*[a-zA-Z0-9]) {cout <<"IDENT " <<yytext <<"\n"; y =y + yyleng;}
+([a-zA-Z])|([a-zA-Z][a-zA-Z0-9_]*[a-zA-Z0-9]) {y =y + yyleng; return IDENT;}
 
         /*------Unrecognized Identifier Errors------*/
 [0-9_][a-zA-Z0-9_]*     {cout <<"Error at line " <<x <<", column " <<y <<": Identifier \"" <<yytext <<"\" must start with a letter\n"; exit(0);}
 [a-zA-Z][a-zA-Z0-9_]*   {cout <<"Error at line " <<x <<", column " <<y <<": Identifier \"" <<yytext <<"\" can't end with an underscore \n"; exit(0);}
 .                       {cout <<"Error at line " <<x <<", column " <<y <<": unrecognized symbol \"" <<yytext <<"\"\n";}
 %%
-
-int main(int argc, char **argv) {
-    if(argc >=2) {
-        yyin =fopen(argv[1], "r");
-
-        if(yyin ==NULL) {
-            yyin =stdin;
-        }
-    }
-    else {
-        yyin =stdin;
-    }
-
-    yylex();
-}
