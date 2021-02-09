@@ -85,7 +85,3 @@ return		{y =y +yyleng; return RETURN;}
 [a-zA-Z][a-zA-Z0-9_]*   {cout <<"Error at line " <<x <<", column " <<y <<": Identifier \"" <<yytext <<"\" can't end with an underscore \n"; exit(0);}
 .                       {cout <<"Error at line " <<x <<", column " <<y <<": unrecognized symbol \"" <<yytext <<"\"\n";}
 %%
-
-int main(int argc, char **argv) {
-    yylex();
-}
