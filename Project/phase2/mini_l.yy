@@ -8,9 +8,6 @@
  extern int y;
 %}
 
-%token END 0 "end of file";
-
-
 %union {
 int ival;
 char* cval;
