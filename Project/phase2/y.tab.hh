@@ -40,7 +40,7 @@
 extern int yydebug;
 #endif
 /* "%code requires" blocks.  */
-#line 5 "mini_l.yy" /* yacc.c:1909  */
+#line 5 "mini_l.y" /* yacc.c:1909  */
 
 
 #include <list>
@@ -117,7 +117,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 40 "mini_l.yy" /* yacc.c:1909  */
+#line 40 "mini_l.y" /* yacc.c:1909  */
 
 int ival;
 char* cval;
