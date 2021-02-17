@@ -88,13 +88,12 @@ StatementDef: Var ASSIGN Expression {printf("StatementDef -> Var ASSIGN Expressi
 
 Var_loop: Var {printf("Var_loop -> Var\n");}
         | Var_loop COMMA Var {printf("Var_loop -> Var_loop COMMA Var\n");}
-        | Var_loop error Var
         ;
 
 Var: IDENT {printf("Var -> IDENT %s\n", $1);}
         | IDENT L_SQUARE_BRACKET Expression R_SQUARE_BRACKET {printf("Var -> IDENT %s L_SQUARE_BRACKET Expression R_SQUARE_BRACKET\n", $1);}
-        | IDENT L_SQUARE_BRACKET Expression R_SQUARE_BRACKET L_SQUARE_BRACKET Expression R_SQUARE_BRACKET {
-	    printf("Var -> IDENT %s L_SQUARE_BRACKET Expression R_SQUARE_BRACKET L_SQUARE_BRACKET Expression R_SQUARE_BRACKET\n", $1);}
+        | IDENT L_SQUARE_BRACKET Expression R_SQUARE_BRACKET L_SQUARE_BRACKET Expression R_SQUARE_BRACKET
+        	{printf("Var -> IDENT %s L_SQUARE_BRACKET Expression R_SQUARE_BRACKET L_SQUARE_BRACKET Expression R_SQUARE_BRACKET\n", $1);}
         ;
 
 Bool_Exp: Relation_And_Expr {printf("Bool_Exp -> Relation_And_Expr\n");}
