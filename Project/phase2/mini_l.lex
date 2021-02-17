@@ -80,5 +80,5 @@ break       {y =y +yyleng; return BREAK;}
         /*------Unrecognized Identifier Errors------*/
 [0-9_][a-zA-Z0-9_]*     {printf("Error at line %d, column %d: Identifier \"%s\" must start with a letter\n",x,y,yytext);exit(0);}
 [a-zA-Z][a-zA-Z0-9_]*   {printf("Error at line %d, column %d: Identifier \"%s\" can't end with an underscore\n",x,y,yytext);exit(0);}
-.                       {printf("Error at line %d, column %d :unrecognized symbol \"%s\"\n",x,y,yytext);exit(0);}
+.                       {printf("Error at line %d, column %d :unrecognized symbol \"%s\"\n",x,y,yytext);}
 %%
