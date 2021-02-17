@@ -37,20 +37,17 @@
 %%
 program: /* epsilon */ {printf("program -> epsilon\n");}
         | program function {printf("program -> program function\n");}
-	    ;
+	;
 function: FUNCTION IDENT SEMICOLON
-          BEGIN_PARAMS Declarations END_PARAMS
-		  BEGIN_LOCALS Declarations END_LOCALS
-		  BEGIN_BODY Statements END_BODY{printf("function -> FUNCTION IDENT %s SEMICOLON BEGIN_PARAMS Declarations END_PARAMS BEGIN_LOCALS Declarations END_LOCALS BEGIN_BODY Statements END_BODY\n",$2);}
-		| FUNCTION IDENT error
-          BEGIN_PARAMS Declarations END_PARAMS
-		  BEGIN_LOCALS Declarations END_LOCALS
-		  BEGIN_BODY Statements END_BODY
+          BEGIN_PARAMS Declarations END_PARAMS BEGIN_LOCALS Declarations END_LOCALS
+		BEGIN_BODY Statements END_BODY{printf("function -> FUNCTION IDENT %s SEMICOLON BEGIN_PARAMS Declarations END_PARAMS BEGIN_LOCALS Declarations END_LOCALS BEGIN_BODY Statements END_BODY\n",$2);}
+	| FUNCTION IDENT error BEGIN_PARAMS Declarations END_PARAMS BEGIN_LOCALS Declarations END_LOCALS
+		BEGIN_BODY Statements END_BODY
         ;
 
 Declarations: /* epsilon */ {printf("Declarations -> epsilon\n");}
         | Declarations DeclarationDef SEMICOLON {printf("Declarations -> Declarations DeclarationDef SEMICOLON\n");}
-		| Declarations DeclarationDef error
+	| Declarations DeclarationDef error
         ;
 
 DeclarationDef: identifier COLON INTEGER {printf("DeclarationDef -> identifier COLON INTEGER\n");}
@@ -58,39 +55,40 @@ DeclarationDef: identifier COLON INTEGER {printf("DeclarationDef -> identifier C
 		printf("DeclarationDef -> identifier COLON ARRAY L_SQUARE_BRACKET NUMBER %d R_SQUARE_BRACKET OF INTEGER\n", $5);}
         | identifier COLON ARRAY L_SQUARE_BRACKET NUMBER R_SQUARE_BRACKET L_SQUARE_BRACKET NUMBER R_SQUARE_BRACKET OF INTEGER {
 		printf("DeclarationDef -> identifier COLON ARRAY L_SQUARE_BRACKET NUMBER %d R_SQUARE_BRACKET L_SQUARE_BRACKET NUMBER %d R_SQUARE_BRACKET OF INTEGER\n", $5, $8);}
-		| identifier error INTEGER
-		| identifier error ARRAY L_SQUARE_BRACKET NUMBER R_SQUARE_BRACKET OF INTEGER
-		| identifier error ARRAY L_SQUARE_BRACKET NUMBER R_SQUARE_BRACKET L_SQUARE_BRACKET NUMBER R_SQUARE_BRACKET OF INTEGER
+	| identifier error INTEGER
+	| identifier error ARRAY L_SQUARE_BRACKET NUMBER R_SQUARE_BRACKET OF INTEGER
+	| identifier error ARRAY L_SQUARE_BRACKET NUMBER R_SQUARE_BRACKET L_SQUARE_BRACKET NUMBER R_SQUARE_BRACKET OF INTEGER
 		;
 
 identifier: IDENT {printf("identifier -> IDENT %s\n", $1);}
         | identifier COMMA IDENT {printf("identifier -> identifier COMMA IDENT %s\n", $3);}
-		| identifier error IDENT
-		;
+	| identifier error IDENT
+	;
 
 Statements: StatementDef SEMICOLON {printf("Statements -> StatementDef SEMICOLON\n");}
         | Statements StatementDef SEMICOLON {printf("Statements -> Statements StatementDef SEMICOLON\n");}
-		| StatementDef error
-		| Statements StatementDef error
+	| StatementDef error
+	| Statements StatementDef error
         ;
 
 StatementDef: Var ASSIGN Expression {printf("StatementDef -> Var ASSIGN Expression\n");}
         | IF Bool_Exp THEN Statements ENDIF {printf("StatementDef -> IF Bool_Exp THEN Statements ENDIF\n");}
-		| IF Bool_Exp THEN Statements ELSE Statements ENDIF {printf("StatementDef -> IF Bool_Exp THEN Statements ELSE Statements ENDIF\n");}
-		| WHILE Bool_Exp BEGINLOOP Statements ENDLOOP {printf("StatementDef -> WHILE Bool_Exp BEGINLOOP Statements ENDLOOP\n");}
-		| DO BEGINLOOP Statements ENDLOOP WHILE Bool_Exp {printf("StatementDef -> DO BEGINLOOP Statements ENDLOOP WHILE Bool_Exp\n");}
-		| FOR Var ASSIGN NUMBER SEMICOLON Bool_Exp SEMICOLON Var ASSIGN Expression BEGINLOOP Statements ENDLOOP {
+	| IF Bool_Exp THEN Statements ELSE Statements ENDIF {printf("StatementDef -> IF Bool_Exp THEN Statements ELSE Statements ENDIF\n");}
+	| WHILE Bool_Exp BEGINLOOP Statements ENDLOOP {printf("StatementDef -> WHILE Bool_Exp BEGINLOOP Statements ENDLOOP\n");}
+	| DO BEGINLOOP Statements ENDLOOP WHILE Bool_Exp {printf("StatementDef -> DO BEGINLOOP Statements ENDLOOP WHILE Bool_Exp\n");}
+	| FOR Var ASSIGN NUMBER SEMICOLON Bool_Exp SEMICOLON Var ASSIGN Expression BEGINLOOP Statements ENDLOOP {
 		printf("StatementDef -> FOR Var ASSIGN NUMBER SEMICOLON Bool_Exp SEMICOLON Var ASSIGN Expression BEGINLOOP Statements ENDLOOP\n");}
-		| READ Var_loop {printf("StatementDef -> READ Var_loop\n");}
-		| WRITE Var_loop {printf("StatementDef -> WRITE Var_loop\n");}
-		| BREAK {printf("StatementDef -> BREAK\n");}
-		| RETURN Expression {printf("StatementDef -> RETURN Expression\n");}
-		| Var error Expression
-		| FOR Var error NUMBER error Bool_Exp error Var error Expression BEGINLOOP Statements ENDLOOP
-		;
+	| READ Var_loop {printf("StatementDef -> READ Var_loop\n");}
+	| WRITE Var_loop {printf("StatementDef -> WRITE Var_loop\n");}
+	| BREAK {printf("StatementDef -> BREAK\n");}
+	| RETURN Expression {printf("StatementDef -> RETURN Expression\n");}
+	| Var error Expression
+	| FOR Var error NUMBER error Bool_Exp error Var error Expression BEGINLOOP Statements ENDLOOP
+	;
 
 Var_loop: Var {printf("Var_loop -> Var\n");}
         | Var_loop COMMA Var {printf("Var_loop -> Var_loop COMMA Var\n");}
+        | Var_loop error Var
         ;
 
 Var: IDENT {printf("Var -> IDENT %s\n", $1);}
