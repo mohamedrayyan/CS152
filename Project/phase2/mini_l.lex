@@ -27,7 +27,7 @@ do		    {y =y +yyleng; return DO;}
 for		    {y =y +yyleng; return FOR;}
 beginloop	{y =y +yyleng; return BEGINLOOP;}
 endloop		{y =y +yyleng; return ENDLOOP;}
-continue	{y =y +yyleng; return CONTINUE;}
+//continue	{y =y +yyleng; return CONTINUE;}
 read		{y =y +yyleng; return READ;}
 write		{y =y +yyleng; return WRITE;}
 and		    {y =y +yyleng; return AND;}
@@ -36,6 +36,7 @@ not		    {y =y +yyleng; return NOT;}
 true		{y =y +yyleng; return TRUE;}
 false		{y =y +yyleng; return FALSE;}
 return		{y =y +yyleng; return RETURN;}
+break       {y =y +yyleng; return BREAK;}
 
         /*------Arithmetic Operators------*/
 "+"         {y =y +yyleng; return ADD;}

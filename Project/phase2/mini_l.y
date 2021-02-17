@@ -17,7 +17,7 @@
 %error-verbose
 %start program
 
-%token FUNCTION BEGIN_PARAMS END_PARAMS BEGIN_LOCALS END_LOCALS BEGIN_BODY END_BODY INTEGER ARRAY OF IF THEN ENDIF ELSE WHILE DO FOR BEGINLOOP ENDLOOP CONTINUE READ WRITE AND OR NOT TRUE FALSE RETURN
+%token FUNCTION BEGIN_PARAMS END_PARAMS BEGIN_LOCALS END_LOCALS BEGIN_BODY END_BODY INTEGER ARRAY OF IF THEN ENDIF ELSE WHILE DO FOR BEGINLOOP ENDLOOP BREAK READ WRITE AND OR NOT TRUE FALSE RETURN
 %token ADD SUB MULT DIV MOD EQ NEQ LT GT LTE GTE
 %token SEMICOLON COLON COMMA L_PAREN R_PAREN EQUAL L_SQUARE_BRACKET R_SQUARE_BRACKET ASSIGN
 %token IDENT NUMBER
@@ -83,7 +83,7 @@ StatementDef: Var ASSIGN Expression {printf("StatementDef -> Var ASSIGN Expressi
 		printf("StatementDef -> FOR Var ASSIGN NUMBER SEMICOLON Bool_Exp SEMICOLON Var ASSIGN Expression BEGINLOOP Statements ENDLOOP\n");}
 		| READ Var_loop {printf("StatementDef -> READ Var_loop\n");}
 		| WRITE Var_loop {printf("StatementDef -> WRITE Var_loop\n");}
-		| CONTINUE {printf("StatementDef -> CONTINUE\n");}
+		| BREAK {printf("StatementDef -> BREAK\n");}
 		| RETURN Expression {printf("StatementDef -> RETURN Expression\n");}
 		| Var error Expression
 		| FOR Var error NUMBER error Bool_Exp error Var error Expression BEGINLOOP Statements ENDLOOP
