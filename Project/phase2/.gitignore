@@ -1,2 +1,4 @@
 lexer
 lex.yy.c
+y.*
+y.*.*
