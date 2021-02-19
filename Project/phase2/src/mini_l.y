@@ -53,12 +53,9 @@ Declarations: /* epsilon */ {printf("Declarations -> epsilon\n");}
 DeclarationDef: identifier COLON INTEGER {printf("DeclarationDef -> identifier COLON INTEGER\n");}
         | identifier COLON ARRAY L_SQUARE_BRACKET NUMBER R_SQUARE_BRACKET OF INTEGER {
 		printf("DeclarationDef -> identifier COLON ARRAY L_SQUARE_BRACKET NUMBER %d R_SQUARE_BRACKET OF INTEGER\n", $5);}
-        | identifier COLON ARRAY L_SQUARE_BRACKET NUMBER R_SQUARE_BRACKET L_SQUARE_BRACKET NUMBER R_SQUARE_BRACKET OF INTEGER {
-		printf("DeclarationDef -> identifier COLON ARRAY L_SQUARE_BRACKET NUMBER %d R_SQUARE_BRACKET L_SQUARE_BRACKET NUMBER %d R_SQUARE_BRACKET OF INTEGER\n", $5, $8);}
 	| identifier error INTEGER
 	| identifier error ARRAY L_SQUARE_BRACKET NUMBER R_SQUARE_BRACKET OF INTEGER
-	| identifier error ARRAY L_SQUARE_BRACKET NUMBER R_SQUARE_BRACKET L_SQUARE_BRACKET NUMBER R_SQUARE_BRACKET OF INTEGER
-		;
+	;
 
 identifier: IDENT {printf("identifier -> IDENT %s\n", $1);}
         | identifier COMMA IDENT {printf("identifier -> identifier COMMA IDENT %s\n", $3);}
