@@ -76,6 +76,8 @@ StatementDef: Var ASSIGN Expression {printf("StatementDef -> Var ASSIGN Expressi
 	| IF Bool_Exp THEN Statements ELSE Statements ENDIF {printf("StatementDef -> IF Bool_Exp THEN Statements ELSE Statements ENDIF\n");}
 	| WHILE Bool_Exp BEGINLOOP Statements ENDLOOP {printf("StatementDef -> WHILE Bool_Exp BEGINLOOP Statements ENDLOOP\n");}
 	| DO BEGINLOOP Statements ENDLOOP WHILE Bool_Exp {printf("StatementDef -> DO BEGINLOOP Statements ENDLOOP WHILE Bool_Exp\n");}
+	| FOR Var ASSIGN NUMBER SEMICOLON Bool_Exp SEMICOLON Var ASSIGN Expression BEGINLOOP Statements ENDLOOP
+		{printf("StatementDef -> FOR Var ASSIGN NUMBER SEMICOLON Bool_Exp SEMICOLON Var ASSIGN Expression BEGINLOOP Statements ENDLOOP\n");}
 	| READ Var_loop {printf("StatementDef -> READ Var_loop\n");}
 	| WRITE Var_loop {printf("StatementDef -> WRITE Var_loop\n");}
 	| BREAK {printf("StatementDef -> BREAK\n");}
