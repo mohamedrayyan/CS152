@@ -76,8 +76,8 @@ StatementDef: Var ASSIGN Expression {printf("StatementDef -> Var ASSIGN Expressi
 	| IF Bool_Exp THEN Statements ELSE Statements ENDIF {printf("StatementDef -> IF Bool_Exp THEN Statements ELSE Statements ENDIF\n");}
 	| WHILE Bool_Exp BEGINLOOP Statements ENDLOOP {printf("StatementDef -> WHILE Bool_Exp BEGINLOOP Statements ENDLOOP\n");}
 	| DO BEGINLOOP Statements ENDLOOP WHILE Bool_Exp {printf("StatementDef -> DO BEGINLOOP Statements ENDLOOP WHILE Bool_Exp\n");}
-	| FOR Var ASSIGN NUMBER SEMICOLON Bool_Exp SEMICOLON Var ASSIGN Expression BEGINLOOP Statements ENDLOOP {
-		printf("StatementDef -> FOR Var ASSIGN NUMBER SEMICOLON Bool_Exp SEMICOLON Var ASSIGN Expression BEGINLOOP Statements ENDLOOP\n");}
+	| FOR Var ASSIGN NUMBER SEMICOLON Bool_Exp SEMICOLON Var ASSIGN Expression BEGINLOOP Statements ENDLOOP
+		{printf("StatementDef -> FOR Var ASSIGN NUMBER SEMICOLON Bool_Exp SEMICOLON Var ASSIGN Expression BEGINLOOP Statements ENDLOOP\n");}
 	| READ Var_loop {printf("StatementDef -> READ Var_loop\n");}
 	| WRITE Var_loop {printf("StatementDef -> WRITE Var_loop\n");}
 	| BREAK {printf("StatementDef -> BREAK\n");}
@@ -92,8 +92,6 @@ Var_loop: Var {printf("Var_loop -> Var\n");}
 
 Var: IDENT {printf("Var -> IDENT %s\n", $1);}
         | IDENT L_SQUARE_BRACKET Expression R_SQUARE_BRACKET {printf("Var -> IDENT %s L_SQUARE_BRACKET Expression R_SQUARE_BRACKET\n", $1);}
-        | IDENT L_SQUARE_BRACKET Expression R_SQUARE_BRACKET L_SQUARE_BRACKET Expression R_SQUARE_BRACKET
-        	{printf("Var -> IDENT %s L_SQUARE_BRACKET Expression R_SQUARE_BRACKET L_SQUARE_BRACKET Expression R_SQUARE_BRACKET\n", $1);}
         ;
 
 Bool_Exp: Relation_And_Expr {printf("Bool_Exp -> Relation_And_Expr\n");}
@@ -108,13 +106,13 @@ Relation_Expr: Expression Comp Expression {printf("Relation_Expr -> Expression C
         | NOT Expression Comp Expression {printf("Relation_Expr -> NOT Expression Comp Expression\n");}
         | TRUE {printf("Relation_Expr -> TRUE\n");}
         | NOT TRUE {printf("Relation_Expr -> NOT TRUE\n");}
-		| FALSE {printf("Relation_Expr -> FALSE\n");}
-		| NOT FALSE {printf("Relation_Expr -> NOT FALSE\n");}
-		| L_PAREN Bool_Exp R_PAREN {printf("Relation_Expr -> L_PAREN Bool_Exp R_PAREN\n");}
-		| NOT L_PAREN Bool_Exp R_PAREN {printf("Relation_Expr -> NOT L_PAREN Bool_Exp R_PAREN\n");}
-		| Expression error Expression
-		| NOT Expression error Expression
-		;
+	| FALSE {printf("Relation_Expr -> FALSE\n");}
+	| NOT FALSE {printf("Relation_Expr -> NOT FALSE\n");}
+	| L_PAREN Bool_Exp R_PAREN {printf("Relation_Expr -> L_PAREN Bool_Exp R_PAREN\n");}
+	| NOT L_PAREN Bool_Exp R_PAREN {printf("Relation_Expr -> NOT L_PAREN Bool_Exp R_PAREN\n");}
+	| Expression error Expression
+	| NOT Expression error Expression
+	;
 
 Comp: EQ {printf("Comp -> EQ\n");}
         | NEQ {printf("Comp -> NEQ\n");}
@@ -133,21 +131,21 @@ Mutiplicative_Expr: Term {printf("Mutiplicative_Expr -> Term\n");}
         | Mutiplicative_Expr MULT Term {printf("Mutiplicative_Expr -> Mutiplicative_Expr MULT Term\n");}
         | Mutiplicative_Expr DIV Term {printf("Mutiplicative_Expr -> Mutiplicative_Expr DIV Term\n");}
         | Mutiplicative_Expr MOD Term {printf("Mutiplicative_Expr -> Mutiplicative_Expr MOD Term\n");}
-		;
+	;
 
 Term: Var {printf("Term -> Var\n");}
         | SUB Var %prec UMINUS {printf("Term -> SUB Var\n");}
-		| NUMBER {printf("Term -> NUMBER %d\n", $1);}
-		| SUB NUMBER %prec UMINUS{printf("Term -> SUB NUMBER %d\n", $2);}
-		| L_PAREN Expression R_PAREN {printf("Term -> L_PAREN Expression R_PAREN\n");}
-		| SUB L_PAREN Expression R_PAREN %prec UMINUS{printf("Term -> SUB L_PAREN Expression R_PAREN\n");}
-		| IDENT L_PAREN Expression_loop R_PAREN {printf("Term -> IDENT %s L_PAREN Expression_loop R_PAREN\n", $1);}
-		| IDENT L_PAREN /* epsilon */ R_PAREN {printf("Term -> IDENT %s L_PAREN /* epsilon */ R_PAREN\n", $1);}
-		;
+	| NUMBER {printf("Term -> NUMBER %d\n", $1);}
+	| SUB NUMBER %prec UMINUS{printf("Term -> SUB NUMBER %d\n", $2);}
+	| L_PAREN Expression R_PAREN {printf("Term -> L_PAREN Expression R_PAREN\n");}
+	| SUB L_PAREN Expression R_PAREN %prec UMINUS{printf("Term -> SUB L_PAREN Expression R_PAREN\n");}
+	| IDENT L_PAREN Expression_loop R_PAREN {printf("Term -> IDENT %s L_PAREN Expression_loop R_PAREN\n", $1);}
+	| IDENT L_PAREN /* epsilon */ R_PAREN {printf("Term -> IDENT %s L_PAREN /* epsilon */ R_PAREN\n", $1);}
+	;
 
 Expression_loop: Expression	{printf("Expression_loop -> Expression\n");}
         | Expression_loop COMMA Expression {printf("Expression_loop -> Expression_loop COMMA Expression\n");}
-		| Expression_loop error Expression
+	| Expression_loop error Expression
         ;
 
 %%
