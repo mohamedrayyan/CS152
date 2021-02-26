@@ -9,7 +9,7 @@ beginbody
 	return fibonacci(k - 1) + fibonacci(k - 2);
 endbody
 
-function main;
+function hayden;
 beginparams
 endparams
 beginlocals
