@@ -86,7 +86,7 @@ set<string> reservedKeywords = {"FUNCTION", "BEGIN_PARAMS", "END_PARAMS", "BEGIN
 start_prog: program {
         string temp ="main";
         // main not defined
-        if(tableFunc.find(temp) ==tableFun.end)) {
+        if(tableFunc.find(temp) ==tableFunc.end()) {
             yy::parser::error(@1, "Error: main not defined!");
         }
         cout <<1 <<endl;
@@ -146,7 +146,7 @@ DeclarationDef: identifier COLON INTEGER {
                 if(tableVar.find(std::string(*it)) !=tableVar.end()) {
                     yy::parser::error(@1, "Error: variable is multiply-defined");
                 }
-                else if(tableFun.find(std::string(*it)) !=tableFunc.end()){
+                else if(tableFunc.find(std::string(*it)) !=tableFunc.end()){
                     yy::parser::error(@1, "Error: defined variable being used by function");
                 }
                 else if(reservedKeywords.find(std::string(*it)) !=reservedKeywords.end()) {
@@ -331,7 +331,7 @@ Var: IDENT {
             $$.array =false;
         }
         | IDENT L_SQUARE_BRACKET Expression R_SQUARE_BRACKET {
-            if(tableVar.find(std::string($1)) ==rableVar.end()) {
+            if(tableVar.find(std::string($1)) ==tableVar.end()) {
                 yy::parser::error(@1, "Error: This is not 1D array, array is missing a specific index");
             }
 
@@ -501,7 +501,7 @@ Expression_loop: Expression	{
             $$.code =$1.code +"param " +$1.id +"\n";
         }
         | Expression_loop COMMA Expression {
-            $$.code =$3.code +"param " +$3.id "\n" +$1.code;
+            $$.code =$3.code +"param " +$3.id +"\n" +$1.code;
             $$.id ="";
         }
 	    | Expression_loop error Expression {
