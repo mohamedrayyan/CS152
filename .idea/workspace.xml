@@ -34,8 +34,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="79a4c43a-95e8-4ec3-afc6-47fbdb35dd9b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Project/phase3/src/mini_l.lex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Project/phase3/src/mini_l.yy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/phase2/tests/fibonacci.min" beforeDir="false" afterPath="$PROJECT_DIR$/Project/phase2/tests/fibonacci.min" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/phase2/src/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Project/phase2/src/Makefile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,8 +64,20 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Project/phase3/src" />
     <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Project/phase3/src" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -83,7 +97,9 @@
       <workItem from="1613772773647" duration="510000" />
       <workItem from="1613773880609" duration="1893000" />
       <workItem from="1613779862547" duration="913000" />
-      <workItem from="1613781771504" duration="3271000" />
+      <workItem from="1613781771504" duration="4913000" />
+      <workItem from="1614806908394" duration="11000" />
+      <workItem from="1614820667011" duration="11820000" />
     </task>
     <servers />
   </component>
@@ -115,11 +131,11 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="174" y="359" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1613528373142">
+    <state x="174" y="359" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1614820752887">
       <screen x="0" y="25" width="1792" height="1021" />
     </state>
     <state x="174" y="366" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1792.1120@0.0.1792.1120" timestamp="1612816742017" />
-    <state x="174" y="359" key="#com.intellij.fileTypes.FileTypeChooser/0.25.1792.1021@0.25.1792.1021" timestamp="1613528373142" />
+    <state x="174" y="359" key="#com.intellij.fileTypes.FileTypeChooser/0.25.1792.1021@0.25.1792.1021" timestamp="1614820752887" />
     <state x="41" y="131" width="1431" height="1007" key="dock-window-1" timestamp="1610402414525">
       <screen x="0" y="25" width="1792" height="1026" />
     </state>
@@ -128,10 +144,11 @@
       <screen x="0" y="25" width="1792" height="1026" />
     </state>
     <state x="597" y="170" width="597" height="735" key="find.popup/0.25.1792.1026@0.25.1792.1026" timestamp="1610475433180" />
-    <state x="561" y="248" width="670" height="739" key="search.everywhere.popup" timestamp="1612829883132">
-      <screen x="0" y="0" width="1792" height="1120" />
+    <state x="561" y="251" width="670" height="674" key="search.everywhere.popup" timestamp="1614971808964">
+      <screen x="0" y="25" width="1792" height="1021" />
     </state>
     <state x="561" y="248" width="670" height="739" key="search.everywhere.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1612829883132" />
+    <state x="561" y="251" width="670" height="674" key="search.everywhere.popup/0.25.1792.1021@0.25.1792.1021" timestamp="1614971808964" />
     <state x="561" y="251" width="670" height="674" key="search.everywhere.popup/0.25.1792.1022@0.25.1792.1022" timestamp="1611719717472" />
     <state x="561" y="252" width="670" height="676" key="search.everywhere.popup/0.25.1792.1026@0.25.1792.1026" timestamp="1610731326452" />
   </component>
