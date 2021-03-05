@@ -174,7 +174,7 @@ DeclarationDef: identifier COLON INTEGER {
                     yy::parser::error(@1, "Error: the defined name is a reserved keyword");
                 }
                 else{
-                    tableVar[*it] = 1;
+                    tableVar[*it] =1;
                     $$.code += ".[] " +*it +", " +to_string($5) +"\n";
                     $$.ids.push_back(*it);
                 }
@@ -283,7 +283,7 @@ StatementDef: Var ASSIGN Expression {
         }
         | BREAK {$$ ="break\n";}
         | RETURN Expression {
-            $$ =$2.code +"ret" +$2.id +"\n";
+            $$ =$2.code +"ret " +$2.id +"\n";
         }
         | Var error Expression {
         }
