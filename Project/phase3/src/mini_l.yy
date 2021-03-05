@@ -131,7 +131,7 @@ Declarations: /* epsilon */ {
             $$.ids =list<string>();
         }
         | Declarations DeclarationDef SEMICOLON {
-            $$.code =$s.code +$1.code;
+            $$.code =$2.code +$1.code;
             $$.ids =$2.ids;
             for(list<string>::iterator it =$1.ids.begin(); it !=$1.ids.end(); it++) {
                 $$.ids.push_back(*it);
@@ -422,7 +422,7 @@ Expression: Mutiplicative_Expr {
         }
         | Expression SUB Mutiplicative_Expr {
             $$.id =_temp_();
-            $.code = $1.code +$3.code +". " +$$.id +"\n" +"- " +$$.id +", " +$1.id +", " +$3.id +"\n";
+            $$.code =$1.code +$3.code +". " +$$.id +"\n" +"- " +$$.id +", " +$1.id +", " +$3.id +"\n";
         }
         ;
 
