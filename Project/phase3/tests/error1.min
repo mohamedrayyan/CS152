@@ -8,8 +8,8 @@ beginlocals
 endlocals
 beginbody
 	read n;
-	n := z + 1
-	n := n + r
+	n := z + 1;
+	n := n + r;
 	write n;
 	break;
 endbody
