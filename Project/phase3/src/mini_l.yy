@@ -144,7 +144,7 @@ Declarations: /* epsilon */ {
 DeclarationDef: identifier COLON INTEGER {
             for(list<string>::iterator it =$1.begin(); it !=$1.end(); it++) {
                 if(tableVar.find(std::string(*it)) !=tableVar.end()) {
-                    yy::parser::error(@1, "Error: variable \"" +$1 +"\" is multiply-defined");
+                    yy::parser::error(@1, "Error: variable " +$1 +" is multiply-defined");
                 }
                 else if(tableFunc.find(std::string(*it)) !=tableFunc.end()){
                     yy::parser::error(@1, "Error: defined variable being used by function");
@@ -165,7 +165,7 @@ DeclarationDef: identifier COLON INTEGER {
             }
             for(list<string>::iterator it =$1.begin(); it !=$1.end(); it++){
                 if(tableVar.find(std::string(*it)) !=tableVar.end()){
-                    yy::parser::error(@1, "Error: variable \"" +$1 +"\"is multiply-defined");
+                    yy::parser::error(@1, "Error: variable " +$1 +" is multiply-defined");
                 }
                 else if(tableFunc.find(std::string(*it)) !=tableFunc.end()){
                     yy::parser::error(@1, "Error: defined variable being used by function");
@@ -323,7 +323,7 @@ Var: IDENT {
                 yy::parser::error(@1, "Error: used was not previously declared");
             }
             else if(tableVar[$1] !=0) {
-                yy::parser::error(@1, "Error: used array \"" + $1 +"\" variable is missing a specified index");
+                yy::parser::error(@1, "Error: used array " + $1 +" variable is missing a specified index");
             }
 
             $$.code ="";
