@@ -104,7 +104,7 @@ program: /* epsilon */ {$$ ="";}
           }
 	    ;
 
-function: FUNCTION IDENT SEMICOLON
+function: FUNCTION ident SEMICOLON
           BEGIN_PARAMS Declarations END_PARAMS BEGIN_LOCALS Declarations END_LOCALS
 		    BEGIN_BODY Statements END_BODY {
 		        $$ ="func " +$2 +"\n";
@@ -121,7 +121,7 @@ function: FUNCTION IDENT SEMICOLON
 		        }
 		        $$ +="endfunc";
 		    }
-	    | FUNCTION IDENT error BEGIN_PARAMS Declarations END_PARAMS BEGIN_LOCALS Declarations END_LOCALS
+	    | FUNCTION ident error BEGIN_PARAMS Declarations END_PARAMS BEGIN_LOCALS Declarations END_LOCALS
 		    BEGIN_BODY Statements END_BODY {
 		    }
         ;
