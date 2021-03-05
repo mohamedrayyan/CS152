@@ -84,11 +84,11 @@ set<string> reservedKeywords = {"FUNCTION", "BEGIN_PARAMS", "END_PARAMS", "BEGIN
 %%
 
 start_prog: program {
-        //string temp ="main";
+        string temp ="main";
         // main not defined
-        //if(tableFunc.find(temp) ==tableFunc.end()) {
-        //    yy::parser::error(@1, "Error: main not defined!");
-        //}
+        if(tableFunc.find(temp) ==tableFunc.end()) {
+            yy::parser::error(@1, "Error: main not defined!");
+        }
         cout <<$1 <<endl;
         }
         ;
