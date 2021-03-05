@@ -219,7 +219,7 @@ StatementDef: Var ASSIGN Expression {
         | IF Bool_Exp THEN Statements ENDIF {
             string L1 =_label_();
             string L2 =_label_();
-            $$ =$2.code +"?:= " +L1 +", " +$2.id +"\n" +":= " +L2 +"\n" +": " +L1 +"\n" +$4 +": " +L2 +"\n";
+            $$ =$2.code +"?:= " +L1 +", " +$2.id +"\n" +$6 +":= " +L2 +"\n" +": " +L1 +"\n" +$4 +": " +L2 +"\n";
         }
         | IF Bool_Exp THEN Statements ELSE Statements ENDIF {
             string L1 = _label_();
