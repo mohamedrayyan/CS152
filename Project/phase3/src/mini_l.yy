@@ -368,7 +368,7 @@ Relation_Expr: Expression Comp Expression {
         }
         | NOT Expression Comp Expression {
             string temp  =_temp_();
-            $$.code =$2.code +$4.code +". " +temp +"\n" +$3 +temp +", " +$2.id +", " +$4.id +"\n" +". " +temp +"\n" +"! " +temp + , " +temp +"\n";
+            $$.code =$2.code +$4.code +". " +temp +"\n" +$3 +temp +", " +$2.id +", " +$4.id +"\n" +". " +temp +"\n" +"! " +temp +", " +temp +"\n";
             $$.id =temp;
         }
         | TRUE {

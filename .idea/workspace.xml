@@ -34,8 +34,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="79a4c43a-95e8-4ec3-afc6-47fbdb35dd9b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Project/phase3/src/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/phase2/src/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Project/phase2/src/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/phase3/src/mini_l.yy" beforeDir="false" afterPath="$PROJECT_DIR$/Project/phase3/src/mini_l.yy" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +96,7 @@
       <workItem from="1613779862547" duration="913000" />
       <workItem from="1613781771504" duration="4913000" />
       <workItem from="1614806908394" duration="11000" />
-      <workItem from="1614820667011" duration="11921000" />
+      <workItem from="1614820667011" duration="12114000" />
     </task>
     <servers />
   </component>
