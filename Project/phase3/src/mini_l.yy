@@ -70,7 +70,7 @@ map<string, int> tableVar;
 map<string, int> tableFunc;
 map<string, int> twoarray;
 set<string> reservedKeywords = {"FUNCTION", "BEGIN_PARAMS", "END_PARAMS", "BEGIN_LOCALS", "END_LOCALS", "BEGIN_BODY", "END_BODY", "INTEGER", "ARRAY",
-"OF", "IF", "THEN", "ENDIF", "ELSE", "WHILE", "DO", "BEGINLOOP", "ENDLOOP", "CONTINUE", "READ", "WRITE", "AND", "OR", "NOT", "TRUE", "FALSE", "RETURN",
+"OF", "IF", "THEN", "ENDIF", "ELSE", "WHILE", "DO", "BEGINLOOP", "ENDLOOP", "BREAK", "READ", "WRITE", "AND", "OR", "NOT", "TRUE", "FALSE", "RETURN",
 "ADD", "SUB", "MULT", "DIV", "MOD", "EQ", "NEQ", "LT", "GT", "LTE", "GTE", "SEMICOLON", "COLON", "COMMA", "L_PAREN", "R_PAREN", "EQUAL", "L_SQUARE_BRACKET",
 "R_SQUARE_BRACKET", "ASSIGN", "IDENT", "NUMBER"};
 	/* end of your code */
@@ -80,7 +80,7 @@ set<string> reservedKeywords = {"FUNCTION", "BEGIN_PARAMS", "END_PARAMS", "BEGIN
 
 	/* specify tokens, type of non-terminals and terminals */
 
-%token FUNCTION BEGIN_PARAMS END_PARAMS BEGIN_LOCALS END_LOCALS BEGIN_BODY END_BODY INTEGER ARRAY OF IF THEN ENDIF ELSE WHILE DO FOR BEGINLOOP ENDLOOP CONTINUE READ WRITE AND OR NOT TRUE FALSE RETURN
+%token FUNCTION BEGIN_PARAMS END_PARAMS BEGIN_LOCALS END_LOCALS BEGIN_BODY END_BODY INTEGER ARRAY OF IF THEN ENDIF ELSE WHILE DO FOR BEGINLOOP ENDLOOP BREAK READ WRITE AND OR NOT TRUE FALSE RETURN
 %token ADD SUB MULT DIV MOD EQ NEQ LT GT LTE GTE
 %token SEMICOLON COLON COMMA L_PAREN R_PAREN EQUAL L_SQUARE_BRACKET R_SQUARE_BRACKET ASSIGN
 %token IDENT NUMBER
@@ -137,8 +137,8 @@ function: FUNCTION ident SEMICOLON
 	      $$ += $8.code;
 	      $$ += $11;
               //9.Using continue statement outside a loop
-              if($$.find("continue") != string::npos){
-                  yy::parser::error(@2, "Error: continue statemnet not within a loop.");
+              if($$.find("break") != string::npos){
+                  yy::parser::error(@2, "Error: break statemnet not within a loop.");
               }
 	      $$ += "endfunc";
 	      }
@@ -293,8 +293,8 @@ StatementDef: Var ASSIGN Expression
               string statements = $4; 
               jump = ":= " + whileStart;
               
-              while(statements.find("continue") != string::npos){
-                  statements.replace(statements.find("continue"), 8, jump); 
+              while(statements.find("break") != string::npos){
+                  statements.replace(statements.find("break"), 8, jump);
               }
                $$ = ": " + whileStart + "\n" + $2.code + "?:= " + L1 + ", " + $2.id + "\n" + ":= " + L2 + "\n" 
                + ": " + L1 + "\n" + statements + ":= " + whileStart + "\n" + ": " + L2 + "\n";
@@ -307,8 +307,8 @@ StatementDef: Var ASSIGN Expression
               string statements = $3; 
               jump = ":= " + whileStart;
               
-              while(statements.find("continue") != string::npos){
-                  statements.replace(statements.find("continue"), 8, jump); 
+              while(statements.find("break") != string::npos){
+                  statements.replace(statements.find("break"), 8, jump);
               }
                $$ = ": " + L1 + "\n" + statements + ":= " + whileStart + "\n " + $6.code + "?:= " + L1 + ", " 
                + $6.id + "\n" ;
@@ -342,7 +342,7 @@ StatementDef: Var ASSIGN Expression
                      $$ += temp;
                   }
 
-	| CONTINUE {$$ = "continue\n";}
+	| BREAK {$$ = "break\n";}
 	| RETURN Expression {$$ = $2.code + "ret " + $2.id + "\n";}
 	| Var error Expression{}
 	;
