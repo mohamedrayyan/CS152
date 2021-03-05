@@ -323,7 +323,7 @@ Var: IDENT {
                 yy::parser::error(@1, "Error: used was not previously declared");
             }
             else if(tableVar[$1] !=0) {
-                yy::parser::error(@1, "Error: this is not reular integer variable");
+                yy::parser::error(@1, "Error: used array " + $1 +" variable is missing a specified index");
             }
 
             $$.code ="";

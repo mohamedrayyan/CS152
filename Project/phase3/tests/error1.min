@@ -4,12 +4,12 @@ endparams
 beginlocals
 	n : integer;
 	r : array [10] of integer;
-	k : array [10] of integer;
+	n : array [10] of integer;
 endlocals
 beginbody
 	read n;
 	n := z + 1;
-	k := k + r;
+	n := n + r;
 	write n;
 	break;
 endbody
