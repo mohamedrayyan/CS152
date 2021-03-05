@@ -154,7 +154,7 @@ DeclarationDef: identifier COLON INTEGER {
                 }
                 else {
                     tableVar[*it] =0;
-                    $$.code +". " +*it +"\n";
+                    $$.code +=". " +*it +"\n";
                     $$.ids.push_back(*it);
                 }
             }
