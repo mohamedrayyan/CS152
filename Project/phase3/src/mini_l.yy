@@ -451,6 +451,10 @@ Term: Var {
                 $$.id =ind;
                 $$.array =false;
             }
+            else {
+                $$.id =_temp_();
+                $$.code = $1.code + ". " + $$.id + "\n" + "= " + $$.id + ", " + $1.id + "\n";
+            }
         }
         | SUB Var %prec UMINUS {
             $$.id =_temp_();
