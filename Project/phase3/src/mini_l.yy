@@ -499,6 +499,7 @@ Term: Var {
 
 Expression_loop: Expression	{
             $$.code =$1.code +"param " +$1.id +"\n";
+            $$.id ="";
         }
         | Expression_loop COMMA Expression {
             $$.code =$3.code +"param " +$3.id +"\n" +$1.code;
