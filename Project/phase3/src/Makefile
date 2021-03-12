@@ -1,4 +1,4 @@
-parser: mini_l.lex mini_l.yy
+my_compiler: mini_l.lex mini_l.yy
 		bison -v -d --file-prefix=parser mini_l.yy
 		flex mini_l.lex
 		g++ -std=c++11 -o parser parser.tab.cc lex.yy.c -lfl
